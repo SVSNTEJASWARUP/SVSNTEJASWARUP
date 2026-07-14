@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sridhara Venkata Sai Naga Teja Swarup — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b1220;
+    --bg-alt:#0e1729;
+    --panel:#111d33;
+    --panel-2:#152744;
+    --steel:#1e3a5f;
+    --border:rgba(148,178,214,0.14);
+    --border-strong:rgba(148,178,214,0.28);
+    --accent:#e8a33d;
+    --accent-soft:rgba(232,163,61,0.14);
+    --accent-dim:#b9822f;
+    --ok:#4ade80;
+    --ok-soft:rgba(74,222,128,0.14);
+    --text:#e7ecf3;
+    --text-dim:#8fa1bd;
+    --text-faint:#5b6d89;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background-image:
+      linear-gradient(rgba(148,178,214,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148,178,214,0.035) 1px, transparent 1px);
+    background-size:48px 48px;
+    pointer-events:none;
+    z-index:0;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 90%);
+  }
+
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+
+  ::selection{background:var(--accent);color:#0b1220;}
+
+  /* ---------- layout shell ---------- */
+  .wrap{max-width:960px;margin:0 auto;padding:0 32px;position:relative;z-index:1;}
+
+  /* ---------- side nav ---------- */
+  .rail{
+    position:fixed;
+    right:28px;top:50%;
+    transform:translateY(-50%);
+    display:flex;flex-direction:column;gap:18px;
+    z-index:100;
+  }
+  .rail button{
+    width:9px;height:9px;border-radius:50%;
+    background:transparent;
+    border:1.5px solid var(--text-faint);
+    cursor:pointer;position:relative;
+    transition:.25s;
+    padding:0;
+  }
+  .rail button:hover{border-color:var(--accent);}
+  .rail button.active{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);}
+  .rail button span{
+    position:absolute;right:22px;top:50%;transform:translateY(-50%);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
+    color:var(--text-dim);white-space:nowrap;
+    opacity:0;pointer-events:none;transition:opacity .2s;
+    background:var(--panel);border:1px solid var(--border);padding:4px 9px;border-radius:4px;
+  }
+  .rail button:hover span{opacity:1;}
+  @media (max-width:860px){ .rail{display:none;} }
+
+  /* ---------- top status bar ---------- */
+  .statusbar{
+    position:sticky;top:0;z-index:50;
+    background:rgba(11,18,32,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .statusbar-inner{
+    max-width:960px;margin:0 auto;padding:14px 32px;
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:var(--mono);font-size:11.5px;color:var(--text-dim);
+    letter-spacing:.04em;
+  }
+  .statusbar .dot{width:6px;height:6px;border-radius:50%;background:var(--ok);display:inline-block;margin-right:7px;
+    box-shadow:0 0 0 3px var(--ok-soft);}
+  .statusbar .id{color:var(--text-faint);}
+
+  /* ---------- hero / badge ---------- */
+  .hero{
+    padding:96px 0 64px;
+    position:relative;
+  }
+  .eyebrow{
+    font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--accent);
+    text-transform:uppercase;margin-bottom:22px;display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--accent);display:inline-block;}
+
+  .badge{
+    background:linear-gradient(155deg, var(--panel-2), var(--panel) 60%);
+    border:1px solid var(--border-strong);
+    border-radius:16px;
+    padding:38px 40px 34px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 30px 60px -30px rgba(0,0,0,0.6);
+  }
+  .badge::after{
+    content:"";
+    position:absolute;
+    top:-100%;left:0;right:0;height:220%;
+    background:linear-gradient(180deg, transparent 0%, rgba(232,163,61,0.08) 45%, rgba(232,163,61,0.16) 50%, rgba(232,163,61,0.08) 55%, transparent 100%);
+    animation:scan 5.5s linear infinite;
+    animation-delay:.6s;
+    pointer-events:none;
+  }
+  @keyframes scan{
+    0%{transform:translateY(0);}
+    100%{transform:translateY(45%);}
+  }
+  @media (prefers-reduced-motion: reduce){ .badge::after{animation:none;display:none;} }
+
+  .badge-top{
+    display:flex;justify-content:space-between;align-items:flex-start;gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:26px;
+  }
+  .badge-id{
+    font-family:var(--mono);font-size:11px;color:var(--text-faint);letter-spacing:.05em;
+  }
+  .badge-id b{color:var(--text-dim);}
+  .clearance{
+    display:inline-flex;align-items:center;gap:7px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.06em;
+    color:var(--ok);
+    background:var(--ok-soft);
+    border:1px solid rgba(74,222,128,0.35);
+    padding:5px 11px;border-radius:20px;
+  }
+  .clearance .dot{width:6px;height:6px;border-radius:50%;background:var(--ok);}
+
+  .badge h1{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(30px, 4.4vw, 48px);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    margin-bottom:14px;
+  }
+  .badge h1 span{color:var(--accent);}
+
+  .role-line{
+    font-family:var(--mono);
+    font-size:14.5px;
+    color:var(--text-dim);
+    margin-bottom:22px;
+  }
+
+  .badge-tags{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:8px;}
+  .btag{
+    font-family:var(--mono);font-size:11.5px;color:var(--text-dim);
+    border:1px solid var(--border-strong);padding:6px 12px;border-radius:6px;
+    background:rgba(148,178,214,0.03);
+  }
+
+  .badge-foot{
+    margin-top:28px;padding-top:20px;
+    border-top:1px dashed var(--border);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+    font-family:var(--mono);font-size:11px;color:var(--text-faint);
+  }
+
+  /* ---------- section shell ---------- */
+  section{padding:64px 0;border-top:1px solid var(--border);position:relative;}
+  .section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:34px;}
+  .section-tag{
+    font-family:var(--mono);font-size:11px;color:var(--text-faint);letter-spacing:.08em;
+    white-space:nowrap;
+  }
+  h2{
+    font-family:var(--display);font-weight:600;font-size:26px;letter-spacing:-.01em;
+  }
+  .lede{
+    color:var(--text-dim);font-size:15.5px;max-width:640px;margin-bottom:8px;
+  }
+
+  /* ---------- summary ---------- */
+  .summary-card{
+    background:var(--panel);border:1px solid var(--border);border-radius:12px;
+    padding:30px 32px;font-size:16px;color:#c9d4e3;
+    border-left:3px solid var(--accent);
+  }
+  .edu-row{
+    margin-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-family:var(--mono);font-size:12.5px;color:var(--text-dim);
+  }
+
+  /* ---------- timeline (experience) ---------- */
+  .log{border-left:1px solid var(--border-strong);margin-left:5px;}
+  .log-entry{
+    position:relative;padding:0 0 34px 30px;
+  }
+  .log-entry:last-child{padding-bottom:2px;}
+  .log-entry::before{
+    content:"";position:absolute;left:-5.5px;top:4px;
+    width:10px;height:10px;border-radius:50%;
+    background:var(--bg);border:2px solid var(--accent);
+  }
+  .log-entry.current::before{background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft);}
+  .log-meta{
+    font-family:var(--mono);font-size:11.5px;color:var(--text-faint);
+    display:flex;gap:10px;align-items:center;margin-bottom:6px;flex-wrap:wrap;
+  }
+  .status-chip{
+    font-family:var(--mono);font-size:10px;letter-spacing:.05em;
+    padding:2px 8px;border-radius:4px;border:1px solid;
+  }
+  .status-chip.granted{color:var(--ok);border-color:rgba(74,222,128,.4);background:var(--ok-soft);}
+  .status-chip.active{color:var(--accent);border-color:rgba(232,163,61,.4);background:var(--accent-soft);}
+  .status-chip.closed{color:var(--text-faint);border-color:var(--border-strong);}
+  .log-entry h3{font-family:var(--display);font-size:18px;font-weight:600;margin-bottom:10px;}
+  .log-entry ul{padding-left:2px;}
+  .log-entry li{
+    color:var(--text-dim);font-size:14.5px;padding-left:16px;position:relative;margin-bottom:6px;
+  }
+  .log-entry li::before{content:"›";position:absolute;left:0;color:var(--accent-dim);}
+
+  /* ---------- leadership / grid cards ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+  .card{
+    background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:24px 24px 22px;
+    transition:.2s;
+  }
+  .card:hover{border-color:var(--border-strong);transform:translateY(-2px);}
+  .card h3{font-family:var(--display);font-size:16.5px;font-weight:600;margin-bottom:10px;}
+  .card p, .card li{color:var(--text-dim);font-size:14px;}
+  .card li{padding-left:14px;position:relative;margin-bottom:5px;}
+  .card li::before{content:"—";position:absolute;left:0;color:var(--text-faint);}
+
+  /* ---------- projects ---------- */
+  .proj-card{position:relative;padding-top:26px;}
+  .proj-index{
+    position:absolute;top:24px;right:24px;
+    font-family:var(--mono);font-size:10.5px;color:var(--text-faint);
+  }
+  .proj-card p{margin-top:4px;font-size:14.5px;line-height:1.55;}
+
+  /* ---------- skills ---------- */
+  .skill-group{margin-bottom:22px;}
+  .skill-group:last-child{margin-bottom:0;}
+  .skill-label{
+    font-family:var(--mono);font-size:11px;color:var(--text-faint);letter-spacing:.08em;
+    margin-bottom:10px;display:block;
+  }
+  .chips{display:flex;flex-wrap:wrap;gap:9px;}
+  .chip{
+    font-family:var(--mono);font-size:12.5px;
+    border:1px solid var(--border-strong);
+    padding:6px 13px;border-radius:20px;
+    color:var(--text-dim);
+    background:rgba(148,178,214,0.03);
+    display:flex;align-items:center;gap:7px;
+  }
+  .chip::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--ok);opacity:.8;}
+
+  /* ---------- certifications / achievements ---------- */
+  .two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;}
+  @media (max-width:760px){.two-col{grid-template-columns:1fr;}}
+  .list-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:26px 28px;}
+  .list-card ul li{
+    font-size:14.5px;color:var(--text-dim);padding:9px 0;
+    border-bottom:1px dashed var(--border);
+    display:flex;gap:10px;align-items:flex-start;
+  }
+  .list-card ul li:last-child{border-bottom:none;}
+  .list-card ul li::before{content:"✓";color:var(--ok);font-family:var(--mono);font-size:12px;margin-top:1px;}
+
+  /* ---------- contact ---------- */
+  .contact-panel{
+    background:linear-gradient(155deg, var(--panel-2), var(--panel));
+    border:1px solid var(--border-strong);
+    border-radius:14px;padding:40px;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;
+  }
+  .contact-panel h2{margin-bottom:8px;}
+  .contact-links{display:flex;flex-wrap:wrap;gap:12px;}
+  .contact-links a{
+    font-family:var(--mono);font-size:13px;
+    border:1px solid var(--border-strong);padding:11px 18px;border-radius:8px;
+    display:flex;align-items:center;gap:8px;color:var(--text);
+    transition:.2s;
+  }
+  .contact-links a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
+  .contact-links a.primary{background:var(--accent);color:#0b1220;border-color:var(--accent);font-weight:600;}
+  .contact-links a.primary:hover{background:var(--accent-dim);color:#0b1220;}
+
+  footer{
+    text-align:center;padding:36px 0 48px;
+    font-family:var(--mono);font-size:11px;color:var(--text-faint);
+  }
+
+  /* ---------- reveal animation ---------- */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.show{opacity:1;transform:translateY(0);}
+
+  /* ---------- focus visibility ---------- */
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+
+  @media (max-width:600px){
+    .wrap{padding:0 20px;}
+    .hero{padding:56px 0 44px;}
+    .badge{padding:28px 22px 26px;}
+    section{padding:48px 0;}
+    .contact-panel{padding:30px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="statusbar">
+  <div class="statusbar-inner">
+    <span><span class="dot"></span>SESSION ACTIVE — PORTFOLIO v1.0</span>
+    <span class="id">REF// TSS-2026</span>
+  </div>
+</div>
+
+<nav class="rail" aria-label="Section navigation">
+  <button data-target="#summary"><span>Summary</span></button>
+  <button data-target="#experience"><span>Experience</span></button>
+  <button data-target="#leadership"><span>Leadership</span></button>
+  <button data-target="#projects"><span>Projects</span></button>
+  <button data-target="#skills"><span>Skills</span></button>
+  <button data-target="#credentials"><span>Credentials</span></button>
+  <button data-target="#contact"><span>Contact</span></button>
+</nav>
+
+<main class="wrap">
+
+  <!-- HERO / BADGE -->
+  <div class="hero">
+    <div class="eyebrow">Identity &amp; Access · Software Engineering</div>
+    <div class="badge">
+      <div class="badge-top">
+        <div class="badge-id">CREDENTIAL <b>#9257A127B</b> · ISSUED 2026</div>
+        <div class="clearance"><span class="dot"></span>ACCESS: GRANTED</div>
+      </div>
+      <h1>Sridhara Venkata Sai<br>Naga Teja <span>Swarup</span></h1>
+      <div class="role-line">B.Tech Computer Science Engineering (2022–2026) · Incoming Cybersecurity Engineer, TCS Ninja</div>
+      <div class="badge-tags">
+        <span class="btag">Cybersecurity &amp; IGA</span>
+        <span class="btag">Salesforce / Agentforce</span>
+        <span class="btag">Applied AI &amp; RAG</span>
+        <span class="btag">Full-Stack Development</span>
+      </div>
+      <div class="badge-foot">
+        <span>K.S.R.M. College of Engineering</span>
+        <span>Vice President, Computer Society of India</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <section id="summary">
+    <div class="section-head reveal">
+      <span class="section-tag">01 / SUMMARY</span>
+      <h2>Professional Summary</h2>
+    </div>
+    <div class="summary-card reveal">
+      <p>A motivated Computer Science Engineering graduate with hands-on experience across software development, artificial intelligence, Salesforce CRM, cybersecurity, and web technologies. Selected into the TCS Ninja Cybersecurity Unit and recognized for leadership as Vice President of the Computer Society of India (CSI), with a track record of completing multiple industry internships spanning AI, CRM automation, and full-stack development. Currently building depth in Identity Governance &amp; Administration (IGA) — SailPoint, Saviynt — alongside cloud computing and Generative AI, with a focus on designing scalable, secure applications.</p>
+      <div class="edu-row">
+        <span>K.S.R.M. COLLEGE OF ENGINEERING</span>
+        <span>B.TECH · COMPUTER SCIENCE ENGINEERING · 2022 – 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-head reveal">
+      <span class="section-tag">02 / LOG</span>
+      <h2>Professional Experience</h2>
+    </div>
+
+    <div class="log">
+      <div class="log-entry current reveal">
+        <div class="log-meta"><span>2026</span><span class="status-chip active">OFFER HELD</span></div>
+        <h3>TCS Ninja — Cybersecurity Unit</h3>
+        <ul>
+          <li>Cleared the campus recruitment process for TCS Ninja's cybersecurity track.</li>
+          <li>Demonstrated programming ability, logical reasoning, and foundational cybersecurity knowledge through the selection process.</li>
+          <li>Preparing to work on enterprise cybersecurity and Identity Governance &amp; Administration technologies.</li>
+        </ul>
+      </div>
+
+      <div class="log-entry reveal">
+        <div class="log-meta"><span>Jul 2025 – Oct 2025</span><span class="status-chip closed">COMPLETED</span></div>
+        <h3>Salesforce AI Agent Developer Intern — SmartBridge (LastMile Program)</h3>
+        <ul>
+          <li>Built AI-enabled Salesforce CRM solutions using Agentforce and Flow Builder.</li>
+          <li>Configured reports, dashboards, validation rules, and process automation for enterprise CRM workflows.</li>
+          <li>Earned the Salesforce AI Agent Developer certification on completion.</li>
+        </ul>
+      </div>
+
+      <div class="log-entry reveal">
+        <div class="log-meta"><span>May 2025 – Jul 2025</span><span class="status-chip closed">COMPLETED</span></div>
+        <h3>Salesforce Developer Intern — Agentblazer Champion Program</h3>
+        <ul>
+          <li>Customized Salesforce objects and applications to fit enterprise use cases.</li>
+          <li>Designed reports, dashboards, and automation flows for CRM implementation.</li>
+        </ul>
+      </div>
+
+      <div class="log-entry reveal">
+        <div class="log-meta"><span class="status-chip closed">COMPLETED</span></div>
+        <h3>AI Developer Intern — Infosys Springboard</h3>
+        <ul>
+          <li>Developed AI agents using LangChain, integrating Gemini, Tavily Search, and OpenWeather APIs.</li>
+          <li>Implemented Retrieval-Augmented Generation (RAG) concepts in agent workflows.</li>
+        </ul>
+      </div>
+
+      <div class="log-entry reveal">
+        <div class="log-meta"><span class="status-chip closed">COMPLETED</span></div>
+        <h3>Full Stack Web Development Intern — EYGDS NEXTGEN</h3>
+        <ul>
+          <li>Built a Personal Finance Manager application spanning frontend, backend, and database layers.</li>
+        </ul>
+      </div>
+
+      <div class="log-entry reveal">
+        <div class="log-meta"><span class="status-chip closed">COMPLETED</span></div>
+        <h3>Web Design &amp; Development Intern — InternshipStudio</h3>
+        <ul>
+          <li>Designed and built a responsive e-commerce website using HTML, CSS, JavaScript, and PHP.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP -->
+  <section id="leadership">
+    <div class="section-head reveal">
+      <span class="section-tag">03 / LEADERSHIP</span>
+      <h2>Leadership Experience</h2>
+    </div>
+    <div class="grid">
+      <div class="card reveal">
+        <h3>Vice President — Computer Society of India (CSI)</h3>
+        <ul>
+          <li>Led technical initiatives across the student chapter</li>
+          <li>Organized InnovateX, coding competitions, workshops and seminars</li>
+          <li>Mentored student volunteers and coordinated event execution</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <h3>Technical Team Head — CSI</h3>
+        <ul>
+          <li>Managed technical teams for college events</li>
+          <li>Ran HTML, Python, Canva, and web development workshops</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <h3>NSS Volunteer</h3>
+        <ul>
+          <li>Participated in community service and awareness activities</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-head reveal">
+      <span class="section-tag">04 / BUILDS</span>
+      <h2>Major Projects</h2>
+    </div>
+    <div class="grid">
+      <div class="card proj-card reveal">
+        <span class="proj-index">01</span>
+        <h3>Pharmacy Delivery CRM</h3>
+        <p>Enterprise Salesforce CRM with custom objects, Flow automation, dashboards, reports, validation rules, and full delivery lifecycle management.</p>
+      </div>
+      <div class="card proj-card reveal">
+        <span class="proj-index">02</span>
+        <h3>AI Weather Agent</h3>
+        <p>LangChain-based intelligent assistant integrating Gemini, Tavily Search, and OpenWeather APIs to answer live, context-aware queries.</p>
+      </div>
+      <div class="card proj-card reveal">
+        <span class="proj-index">03</span>
+        <h3>SMS Spam Detection</h3>
+        <p>Machine learning classifier for spam detection using NLP preprocessing and text classification techniques.</p>
+      </div>
+      <div class="card proj-card reveal">
+        <span class="proj-index">04</span>
+        <h3>Personal Finance Manager</h3>
+        <p>Full-stack application for tracking expenses and managing personal finances across web front end, API layer, and database.</p>
+      </div>
+      <div class="card proj-card reveal">
+        <span class="proj-index">05</span>
+        <h3>E-commerce Website</h3>
+        <p>Responsive online shopping platform with a product catalog and a clean, user-friendly interface.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-head reveal">
+      <span class="section-tag">05 / PERMISSIONS</span>
+      <h2>Technical Skills</h2>
+    </div>
+    <div class="reveal">
+      <div class="skill-group">
+        <span class="skill-label">LANGUAGES</span>
+        <div class="chips">
+          <span class="chip">Java</span><span class="chip">Python</span><span class="chip">C</span><span class="chip">JavaScript</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <span class="skill-label">WEB &amp; DATA</span>
+        <div class="chips">
+          <span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">React</span>
+          <span class="chip">MySQL</span><span class="chip">Oracle</span><span class="chip">MongoDB</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <span class="skill-label">CRM &amp; AUTOMATION</span>
+        <div class="chips">
+          <span class="chip">Salesforce</span><span class="chip">Agentforce</span><span class="chip">Flow Builder</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <span class="skill-label">SECURITY &amp; IGA</span>
+        <div class="chips">
+          <span class="chip">Cybersecurity</span><span class="chip">SailPoint</span><span class="chip">Saviynt</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <span class="skill-label">AI / ML</span>
+        <div class="chips">
+          <span class="chip">LangChain</span><span class="chip">RAG</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <span class="skill-label">TOOLING</span>
+        <div class="chips">
+          <span class="chip">Git</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS: certifications + achievements -->
+  <section id="credentials">
+    <div class="section-head reveal">
+      <span class="section-tag">06 / RECORD</span>
+      <h2>Certifications &amp; Achievements</h2>
+    </div>
+    <div class="two-col reveal">
+      <div class="list-card">
+        <span class="skill-label">CERTIFICATIONS</span>
+        <ul>
+          <li>Salesforce AI Agent Developer — SmartBridge</li>
+          <li>Salesforce Agentblazer Champion Program</li>
+          <li>Infosys Springboard — Agent Orchestration Framework with LangChain</li>
+          <li>TechSaksham AICTE–Edunet AI Program</li>
+          <li>Multiple IBM, edX, and GUVI cybersecurity certifications</li>
+        </ul>
+      </div>
+      <div class="list-card">
+        <span class="skill-label">ACHIEVEMENTS</span>
+        <ul>
+          <li>Selected for TCS Ninja — Cybersecurity Unit</li>
+          <li>Vice President, Computer Society of India</li>
+          <li>Completed internships across AI, Salesforce, and full-stack development</li>
+          <li>Organized and led multiple technical events and workshops</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-head reveal">
+      <span class="section-tag">07 / CONNECT</span>
+      <h2>Get in Touch</h2>
+    </div>
+    <div class="contact-panel reveal">
+      <div>
+        <h2>Let's build something secure.</h2>
+        <p class="lede" style="margin-top:6px;">Open to opportunities in cybersecurity, IGA, and applied AI engineering.</p>
+      </div>
+      <div class="contact-links">
+        <a class="primary" href="https://www.linkedin.com/in/venkata-sai-naga-tejaswarup-sridhara-9257a127b/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="#" title="Add your GitHub link">GitHub — add link</a>
+        <a href="#" title="Add your email">Email — add address</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>© 2026 SRIDHARA VENKATA SAI NAGA TEJA SWARUP — BUILT WITH INTENT</footer>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.12});
+  revealEls.forEach(el=>io.observe(el));
+
+  // Side nav active state + navigation
+  const railButtons = document.querySelectorAll('.rail button');
+  const sections = Array.from(railButtons).map(b=>document.querySelector(b.dataset.target));
+
+  railButtons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelector(btn.dataset.target).scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
+  const navObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      const idx = sections.indexOf(entry.target);
+      if(idx === -1) return;
+      if(entry.isIntersecting){
+        railButtons.forEach(b=>b.classList.remove('active'));
+        railButtons[idx].classList.add('active');
+      }
+    });
+  }, {rootMargin:'-45% 0px -45% 0px', threshold:0});
+
+  sections.forEach(s=> s && navObserver.observe(s));
+</script>
+
+</body>
+</html>
