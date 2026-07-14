@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Teja Swarup | Cybersecurity & IAM Engineer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:#06121F;
+color:white;
+overflow-x:hidden;
+
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+width:10px;
+}
+
+::-webkit-scrollbar-track{
+background:#071a2d;
+}
+
+::-webkit-scrollbar-thumb{
+background:#1d8fff;
+border-radius:20px;
+}
+
+/* Animated Background */
+
+body::before{
+
+content:'';
+
+position:fixed;
+
+width:600px;
+height:600px;
+
+background:#008cff22;
+
+filter:blur(140px);
+
+top:-150px;
+right:-150px;
+
+z-index:-1;
+
+animation:move1 12s infinite alternate;
+
+}
+
+body::after{
+
+content:'';
+
+position:fixed;
+
+width:500px;
+height:500px;
+
+background:#00ffd522;
+
+bottom:-120px;
+left:-100px;
+
+filter:blur(140px);
+
+z-index:-1;
+
+animation:move2 14s infinite alternate;
+
+}
+
+@keyframes move1{
+
+100%{
+
+transform:translate(-100px,120px);
+
+}
+
+}
+
+@keyframes move2{
+
+100%{
+
+transform:translate(120px,-80px);
+
+}
+
+}
+
+/* Navbar */
+
+nav{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+padding:20px 8%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:rgba(7,18,31,.75);
+
+backdrop-filter:blur(20px);
+
+z-index:999;
+
+}
+
+.logo{
+
+font-size:28px;
+
+font-weight:700;
+
+color:#2ba8ff;
+
+}
+
+.logo span{
+
+color:#00ffe5;
+
+}
+
+nav ul{
+
+display:flex;
+
+gap:30px;
+
+list-style:none;
+
+}
+
+nav ul li a{
+
+text-decoration:none;
+
+color:white;
+
+transition:.3s;
+
+font-weight:500;
+
+}
+
+nav ul li a:hover{
+
+color:#2ba8ff;
+
+}
+
+/* Hero */
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:120px 8%;
+
+gap:60px;
+
+}
+
+.left{
+
+flex:1;
+
+}
+
+.right{
+
+flex:1;
+
+display:flex;
+
+justify-content:center;
+
+}
+
+/* Badge */
+
+.badge{
+
+display:inline-block;
+
+padding:10px 22px;
+
+background:#1d8fff22;
+
+border:1px solid #2ba8ff;
+
+border-radius:40px;
+
+color:#7ed4ff;
+
+font-size:14px;
+
+margin-bottom:20px;
+
+}
+
+/* Heading */
+
+.hero h1{
+
+font-size:58px;
+
+line-height:70px;
+
+margin-bottom:15px;
+
+}
+
+.hero h1 span{
+
+background:linear-gradient(90deg,#2ba8ff,#00ffd5);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.hero h2{
+
+font-size:28px;
+
+font-weight:500;
+
+color:#c6d7ef;
+
+margin-bottom:25px;
+
+}
+
+.hero p{
+
+font-size:17px;
+
+line-height:34px;
+
+color:#b7c4d8;
+
+margin-bottom:35px;
+
+}
+
+/* Buttons */
+
+.buttons{
+
+display:flex;
+
+gap:20px;
+
+}
+
+.btn{
+
+padding:15px 35px;
+
+border-radius:50px;
+
+text-decoration:none;
+
+font-weight:600;
+
+transition:.4s;
+
+}
+
+.primary{
+
+background:linear-gradient(90deg,#2ba8ff,#00d9ff);
+
+color:white;
+
+}
+
+.primary:hover{
+
+transform:translateY(-5px);
+
+box-shadow:0 15px 35px #00bfff55;
+
+}
+
+.secondary{
+
+border:2px solid #2ba8ff;
+
+color:white;
+
+}
+
+.secondary:hover{
+
+background:#2ba8ff;
+
+}
+
+/* Profile Card */
+
+.profile{
+
+width:380px;
+
+background:rgba(255,255,255,.05);
+
+backdrop-filter:blur(25px);
+
+border-radius:30px;
+
+padding:40px;
+
+border:1px solid rgba(255,255,255,.08);
+
+box-shadow:0 20px 60px rgba(0,0,0,.45);
+
+animation:float 5s ease-in-out infinite;
+
+}
+
+@keyframes float{
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+}
+
+.avatar{
+
+width:150px;
+
+height:150px;
+
+border-radius:50%;
+
+margin:auto;
+
+background:linear-gradient(135deg,#2ba8ff,#00ffd5);
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:65px;
+
+margin-bottom:25px;
+
+}
+
+.profile h3{
+
+text-align:center;
+
+font-size:28px;
+
+margin-bottom:5px;
+
+}
+
+.profile h4{
+
+text-align:center;
+
+font-weight:500;
+
+color:#8fd2ff;
+
+margin-bottom:30px;
+
+}
+
+.info{
+
+display:flex;
+
+justify-content:space-between;
+
+padding:12px 0;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+font-size:15px;
+
+}
+
+.social{
+
+margin-top:30px;
+
+display:flex;
+
+justify-content:center;
+
+gap:18px;
+
+}
+
+.social a{
+
+width:48px;
+
+height:48px;
+
+background:#1d8fff22;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+border-radius:50%;
+
+text-decoration:none;
+
+color:white;
+
+font-size:20px;
+
+transition:.4s;
+
+}
+
+.social a:hover{
+
+background:#2ba8ff;
+
+transform:translateY(-5px);
+
+}
+
+/* Responsive */
+
+@media(max-width:1000px){
+
+.hero{
+
+flex-direction:column-reverse;
+
+text-align:center;
+
+}
+
+.buttons{
+
+justify-content:center;
+
+}
+
+.hero h1{
+
+font-size:42px;
+
+line-height:54px;
+
+}
+
+nav ul{
+
+display:none;
+
+}
+
+.profile{
+
+width:100%;
+
+max-width:420px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+Teja<span>.</span>
+</div>
+
+<ul>
+
+<li><a href="#about">About</a></li>
+
+<li><a href="#experience">Experience</a></li>
+
+<li><a href="#projects">Projects</a></li>
+
+<li><a href="#skills">Skills</a></li>
+
+<li><a href="#certifications">Certifications</a></li>
+
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<div class="left">
+
+<div class="badge">
+Assistant System Engineer Trainee • Tata Consultancy Services
+</div>
+
+<h1>
+
+Hi, I'm
+
+<br>
+
+<span>Teja Swarup</span>
+
+</h1>
+
+<h2>
+
+Cybersecurity • Identity & Access Management • AI Engineer
+
+</h2>
+
+<p>
+
+I am an Assistant System Engineer Trainee passionate about
+Cybersecurity, Identity & Access Management (IAM),
+Enterprise Security, Salesforce, AI Engineering and Secure
+Software Development. I enjoy building scalable enterprise
+solutions that improve governance, automation and digital trust.
+
+</p>
+
+<div class="buttons">
+
+<a href="#" class="btn primary">
+
+Download Resume
+
+</a>
+
+<a href="#contact" class="btn secondary">
+
+Contact Me
+
+</a>
+
+</div>
+
+</div>
+
+<div class="right">
+
+<div class="profile">
+
+<div class="avatar">
+
+<i class="fa-solid fa-user"></i>
+
+</div>
+
+<h3>
+
+V. S. N. Teja Swarup
+
+</h3>
+
+<h4>
+
+Assistant System Engineer Trainee
+
+</h4>
+
+<div class="info">
+
+<span>Company</span>
+
+<strong>TCS</strong>
+
+</div>
+
+<div class="info">
+
+<span>Specialization</span>
+
+<strong>Cybersecurity</strong>
+
+</div>
+
+<div class="info">
+
+<span>Domain</span>
+
+<strong>IAM</strong>
+
+</div>
+
+<div class="info">
+
+<span>Location</span>
+
+<strong>India</strong>
+
+</div>
+
+<div class="social">
+
+<a href="#"><i class="fab fa-linkedin"></i></a>
+
+<a href="#"><i class="fab fa-github"></i></a>
+
+<a href="#"><i class="fa-solid fa-envelope"></i></a>
+
+<a href="#"><i class="fa-solid fa-phone"></i></a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- ================= ABOUT SECTION ================= -->
+
+<section id="about" style="padding:90px 8%;">
+
+<div style="text-align:center;margin-bottom:60px;">
+
+<h2 style="font-size:42px;color:#2ba8ff;">
+About Me
+</h2>
+
+<p style="color:#9fb4c9;font-size:18px;">
+Passionate about building secure enterprise solutions and continuously learning emerging technologies.
+</p>
+
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;">
+
+<div>
+
+<h3 style="font-size:34px;margin-bottom:20px;">
+
+Building Secure Digital Experiences
+
+</h3>
+
+<p style="line-height:34px;color:#b8c6d9;font-size:17px;">
+
+I am an <b>Assistant System Engineer Trainee at Tata Consultancy Services (TCS)</b> with a strong interest in Cybersecurity, Identity & Access Management (IAM), Enterprise Security, Artificial Intelligence, and Secure Software Development.
+
+<br><br>
+
+My professional journey includes hands-on experience with Salesforce, ServiceNow, AI Agent Development, Java, Python, and enterprise application development. I enjoy solving business challenges through automation, governance, and secure digital identity solutions.
+
+<br><br>
+
+I believe in continuous learning, collaboration, and delivering technology solutions that create measurable business value.
+
+</p>
+
+</div>
+
+<div>
+
+<div style="background:#0d1d32;padding:35px;border-radius:25px;box-shadow:0 20px 40px rgba(0,0,0,.35);">
+
+<h3 style="margin-bottom:30px;color:#2ba8ff;">
+Quick Information
+</h3>
+
+<div class="info">
+<span>Current Role</span>
+<strong>ASE Trainee @ TCS</strong>
+</div>
+
+<div class="info">
+<span>Primary Domain</span>
+<strong>Cybersecurity</strong>
+</div>
+
+<div class="info">
+<span>Specialization</span>
+<strong>Identity & Access Management</strong>
+</div>
+
+<div class="info">
+<span>Programming</span>
+<strong>Java • Python • SQL</strong>
+</div>
+
+<div class="info">
+<span>Enterprise Platforms</span>
+<strong>Salesforce • ServiceNow</strong>
+</div>
+
+<div class="info">
+<span>AI Technologies</span>
+<strong>LangChain • GenAI • RAG</strong>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+
+<section id="experience" style="padding:90px 8%;background:#081624;">
+
+<div style="text-align:center;margin-bottom:60px;">
+
+<h2 style="font-size:42px;color:#2ba8ff;">
+Professional Experience
+</h2>
+
+</div>
+
+<div style="position:relative;border-left:4px solid #2ba8ff;padding-left:35px;">
+
+<div style="margin-bottom:50px;">
+
+<h3 style="color:#2ba8ff;">
+Assistant System Engineer Trainee
+</h3>
+
+<h4>Tata Consultancy Services</h4>
+
+<p style="color:#82c7ff;">
+May 2026 - Present
+</p>
+
+<p style="margin-top:15px;color:#b9c6d8;line-height:30px;">
+
+• Working on enterprise applications.
+
+<br>
+
+• Learning enterprise Cybersecurity practices.
+
+<br>
+
+• Identity & Access Management.
+
+<br>
+
+• Secure software engineering.
+
+<br>
+
+• Agile development methodologies.
+
+</p>
+
+</div>
+
+<div style="margin-bottom:50px;">
+
+<h3 style="color:#2ba8ff;">
+Salesforce AI Agent Developer
+</h3>
+
+<h4>TCS LastMile Program</h4>
+
+<p style="color:#82c7ff;">
+2025
+</p>
+
+<p style="margin-top:15px;color:#b9c6d8;line-height:30px;">
+
+• Salesforce Agentforce
+
+<br>
+
+• AI Agent Development
+
+<br>
+
+• Prompt Engineering
+
+<br>
+
+• CRM Automation
+
+<br>
+
+• Flow Builder
+
+</p>
+
+</div>
+
+<div style="margin-bottom:50px;">
+
+<h3 style="color:#2ba8ff;">
+Salesforce Developer
+</h3>
+
+<h4>SmartBridge</h4>
+
+<p style="color:#82c7ff;">
+2025
+</p>
+
+<p style="margin-top:15px;color:#b9c6d8;line-height:30px;">
+
+• Apex
+
+<br>
+
+• Reports
+
+<br>
+
+• Dashboards
+
+<br>
+
+• CRM Development
+
+</p>
+
+</div>
+
+<div>
+
+<h3 style="color:#2ba8ff;">
+AI Developer
+</h3>
+
+<h4>Infosys Springboard</h4>
+
+<p style="color:#82c7ff;">
+2025
+</p>
+
+<p style="margin-top:15px;color:#b9c6d8;line-height:30px;">
+
+• LangChain
+
+<br>
+
+• Python
+
+<br>
+
+• AI Agents
+
+<br>
+
+• Retrieval Augmented Generation
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= SKILLS ================= -->
+
+<section id="skills" style="padding:90px 8%;">
+
+<div style="text-align:center;margin-bottom:60px;">
+
+<h2 style="font-size:42px;color:#2ba8ff;">
+
+Technical Skills
+
+</h2>
+
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:35px;">
+
+<div>
+
+<p>Java</p>
+
+<div style="background:#102238;height:12px;border-radius:20px;">
+
+<div style="width:92%;height:12px;background:#2ba8ff;border-radius:20px;"></div>
+
+</div>
+
+<br>
+
+<p>Python</p>
+
+<div style="background:#102238;height:12px;border-radius:20px;">
+
+<div style="width:90%;height:12px;background:#00d9ff;border-radius:20px;"></div>
+
+</div>
+
+<br>
+
+<p>Cybersecurity</p>
+
+<div style="background:#102238;height:12px;border-radius:20px;">
+
+<div style="width:88%;height:12px;background:#22d3ee;border-radius:20px;"></div>
+
+</div>
+
+</div>
+
+<div>
+
+<p>Salesforce</p>
+
+<div style="background:#102238;height:12px;border-radius:20px;">
+
+<div style="width:92%;height:12px;background:#2ba8ff;border-radius:20px;"></div>
+
+</div>
+
+<br>
+
+<p>Identity & Access Management</p>
+
+<div style="background:#102238;height:12px;border-radius:20px;">
+
+<div style="width:86%;height:12px;background:#00d9ff;border-radius:20px;"></div>
+
+</div>
+
+<br>
+
+<p>Artificial Intelligence</p>
+
+<div style="background:#102238;height:12px;border-radius:20px;">
+
+<div style="width:84%;height:12px;background:#22d3ee;border-radius:20px;"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- ================= PROJECTS ================= -->
+
+<section id="projects" style="padding:90px 8%;background:#081624;">
+
+<div style="text-align:center;margin-bottom:60px;">
+
+<h2 style="font-size:42px;color:#2ba8ff;">
+Featured Projects
+</h2>
+
+<p style="color:#9fb4c9;">
+Enterprise applications, AI solutions, and business automation.
+</p>
+
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:30px;">
+
+<div class="project-card">
+
+<i class="fa-solid fa-shield-halved"></i>
+
+<h3>Identity Governance Portal</h3>
+
+<p>
+Designed a secure IAM solution focusing on access governance,
+user lifecycle management, approval workflows, and compliance.
+</p>
+
+<span>IAM • Cybersecurity • Java</span>
+
+</div>
+
+<div class="project-card">
+
+<i class="fa-brands fa-salesforce"></i>
+
+<h3>Pharmacy Delivery CRM</h3>
+
+<p>
+Salesforce CRM application with Flow Automation,
+Dashboards, Reports, Validation Rules,
+and secure business workflows.
+</p>
+
+<span>Salesforce • Apex • Flow Builder</span>
+
+</div>
+
+<div class="project-card">
+
+<i class="fa-solid fa-robot"></i>
+
+<h3>AI Agent Platform</h3>
+
+<p>
+
+Developed AI Agents using LangChain,
+Prompt Engineering and RAG
+for enterprise automation.
+
+</p>
+
+<span>Python • LangChain • AI</span>
+
+</div>
+
+<div class="project-card">
+
+<i class="fa-solid fa-wallet"></i>
+
+<h3>Personal Finance Manager</h3>
+
+<p>
+
+Built a MERN-based finance application
+for budgeting, expense tracking,
+and financial insights.
+
+</p>
+
+<span>MERN • MongoDB • React</span>
+
+</div>
+
+</div>
+
+</section>
+
+<style>
+
+.project-card{
+
+background:#102238;
+
+padding:35px;
+
+border-radius:25px;
+
+transition:.4s;
+
+border:1px solid rgba(255,255,255,.05);
+
+}
+
+.project-card:hover{
+
+transform:translateY(-12px);
+
+box-shadow:0 20px 45px rgba(0,0,0,.4);
+
+border:1px solid #2ba8ff;
+
+}
+
+.project-card i{
+
+font-size:42px;
+
+color:#2ba8ff;
+
+margin-bottom:20px;
+
+}
+
+.project-card h3{
+
+margin-bottom:15px;
+
+}
+
+.project-card p{
+
+color:#b5c5d9;
+
+line-height:30px;
+
+margin-bottom:20px;
+
+}
+
+.project-card span{
+
+background:#1d8fff22;
+
+padding:8px 15px;
+
+border-radius:30px;
+
+color:#8dd7ff;
+
+font-size:14px;
+
+}
+
+</style>
+
+<!-- ================= CERTIFICATIONS ================= -->
+
+<section id="certifications" style="padding:90px 8%;">
+
+<div style="text-align:center;margin-bottom:60px;">
+
+<h2 style="font-size:42px;color:#2ba8ff;">
+Professional Certifications
+</h2>
+
+</div>
+
+<div class="cert-grid">
+
+<div class="cert-card">
+<i class="fa-solid fa-award"></i>
+<h3>IBM Cybersecurity Fundamentals</h3>
+</div>
+
+<div class="cert-card">
+<i class="fa-brands fa-google"></i>
+<h3>Google AI for Anyone</h3>
+</div>
+
+<div class="cert-card">
+<i class="fa-brands fa-google"></i>
+<h3>Google AI with TensorFlow.js</h3>
+</div>
+
+<div class="cert-card">
+<i class="fa-brands fa-salesforce"></i>
+<h3>Salesforce AI Agent Developer</h3>
+</div>
+
+<div class="cert-card">
+<i class="fa-solid fa-cloud"></i>
+<h3>ServiceNow Administrator</h3>
+</div>
+
+<div class="cert-card">
+<i class="fa-solid fa-code"></i>
+<h3>Accenture Advanced Engineering</h3>
+</div>
+
+</div>
+
+<style>
+
+.cert-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:25px;
+
+}
+
+.cert-card{
+
+background:#0d1d32;
+
+padding:30px;
+
+text-align:center;
+
+border-radius:20px;
+
+transition:.4s;
+
+}
+
+.cert-card:hover{
+
+background:#122845;
+
+transform:scale(1.05);
+
+}
+
+.cert-card i{
+
+font-size:45px;
+
+margin-bottom:20px;
+
+color:#2ba8ff;
+
+}
+
+</style>
+
+</section>
+
+<!-- ================= ACHIEVEMENTS ================= -->
+
+<section style="padding:80px 8%;background:#081624;">
+
+<div style="display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
+text-align:center;">
+
+<div>
+
+<h1 style="font-size:55px;color:#2ba8ff;">15+</h1>
+
+<p>Professional Certifications</p>
+
+</div>
+
+<div>
+
+<h1 style="font-size:55px;color:#2ba8ff;">10+</h1>
+
+<p>Projects Completed</p>
+
+</div>
+
+<div>
+
+<h1 style="font-size:55px;color:#2ba8ff;">6+</h1>
+
+<p>Internships</p>
+
+</div>
+
+<div>
+
+<h1 style="font-size:55px;color:#2ba8ff;">1000+</h1>
+
+<p>Learning Hours</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= LEADERSHIP ================= -->
+
+<section style="padding:90px 8%;">
+
+<div style="text-align:center;margin-bottom:60px;">
+
+<h2 style="font-size:42px;color:#2ba8ff;">
+
+Leadership
+
+</h2>
+
+</div>
+
+<div style="background:#102238;
+padding:40px;
+border-radius:25px;">
+
+<h3 style="margin-bottom:20px;">
+
+Former Vice President — Computer Society of India (CSI)
+
+</h3>
+
+<p style="line-height:34px;color:#b8c7d9;">
+
+Led technical events, coding workshops,
+innovation programs,
+and student initiatives while promoting
+technology learning,
+leadership,
+and professional development.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact" style="padding:90px 8%;background:#081624;">
+
+<div style="text-align:center;margin-bottom:50px;">
+
+<h2 style="font-size:42px;color:#2ba8ff;">
+Let's Connect
+</h2>
+
+</div>
+
+<div style="max-width:700px;
+margin:auto;
+background:#102238;
+padding:45px;
+border-radius:25px;">
+
+<h3>Email</h3>
+
+<p>tejaplacements@gmail.com</p>
+
+<br>
+
+<h3>Phone</h3>
+
+<p>+91 8309162253</p>
+
+<br>
+
+<h3>LinkedIn</h3>
+
+<p>
+
+linkedin.com/in/venkata-sai-naga-tejaswarup-sridhara-9257a127b
+
+</p>
+
+<br>
+
+<h3>Current Organization</h3>
+
+<p>
+
+Tata Consultancy Services
+
+</p>
+
+</div>
+
+</section>
+
+<footer style="padding:40px;text-align:center;background:#06121F;">
+
+<h2 style="color:#2ba8ff;">
+
+Teja Swarup
+
+</h2>
+
+<p style="margin-top:10px;color:#9fb4c9;">
+
+Cybersecurity • Identity & Access Management • AI Engineering
+
+</p>
+
+<p style="margin-top:25px;color:#60738f;">
+
+© 2026 All Rights Reserved.
+
+</p>
+
+</footer>
+
+</body>
+
+</html>
