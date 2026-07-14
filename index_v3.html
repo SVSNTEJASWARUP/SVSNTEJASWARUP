@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Venkata Sai Naga Tejaswarup Sridhara — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFE7D6;
+    --paper-deep:#E6DCC6;
+    --card:#FAF6EC;
+    --card-line:#F3EEDF;
+    --ink:#26314A;
+    --ink-soft:#5B6478;
+    --ink-faint:#93998F;
+    --line:rgba(38,49,74,0.18);
+    --line-strong:rgba(38,49,74,0.3);
+    --stamp-blue:#2B4570;
+    --stamp-blue-soft:rgba(43,69,112,0.09);
+    --stamp-red:#A23B3B;
+    --stamp-red-soft:rgba(162,59,59,0.09);
+    --gold:#B8862E;
+    --gold-soft:rgba(184,134,46,0.12);
+    --display:'Fraunces', serif;
+    --body:'Work Sans', sans-serif;
+    --mono:'Space Mono', monospace;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.65;
+    overflow-x:hidden;
+    background-image:
+      repeating-linear-gradient(115deg, rgba(38,49,74,0.015) 0px, rgba(38,49,74,0.015) 1px, transparent 1px, transparent 5px);
+  }
+
+  a{color:inherit;}
+  ul{list-style:none;}
+  ::selection{background:var(--gold);color:#fff;}
+
+  .wrap{max-width:920px;margin:0 auto;padding:0 34px;position:relative;z-index:1;}
+
+  /* ---------- perforation strip ---------- */
+  .perf{
+    display:flex;justify-content:center;gap:14px;padding:10px 0 0;
+    overflow:hidden;
+  }
+  .perf span{width:6px;height:6px;border-radius:50%;background:var(--paper-deep);border:1px solid var(--line);flex:none;}
+
+  /* ---------- top bar ---------- */
+  .statusbar{
+    position:sticky;top:0;z-index:60;
+    background:rgba(239,231,214,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .statusbar-inner{
+    max-width:920px;margin:0 auto;padding:14px 34px;
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:var(--mono);font-size:11px;color:var(--ink-soft);letter-spacing:.03em;
+  }
+  .statusbar .stamp-dot{
+    display:inline-flex;align-items:center;gap:6px;
+  }
+  .statusbar .stamp-dot::before{
+    content:"";width:6px;height:6px;border-radius:50%;background:var(--stamp-blue);
+  }
+
+  /* ---------- tab rail ---------- */
+  .rail{
+    position:fixed;right:0;top:50%;transform:translateY(-50%);
+    display:flex;flex-direction:column;gap:6px;z-index:100;
+  }
+  .rail button{
+    font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;
+    background:var(--card);border:1px solid var(--line-strong);border-right:none;
+    color:var(--ink-soft);cursor:pointer;
+    padding:8px 14px 8px 12px;border-radius:6px 0 0 6px;
+    transform:translateX(46px);transition:transform .22s ease, background .22s, color .22s;
+    box-shadow:-3px 3px 8px rgba(38,49,74,0.06);
+  }
+  .rail button:hover{transform:translateX(0);}
+  .rail button.active{
+    transform:translateX(0);
+    background:var(--stamp-blue);color:#f5f2e8;border-color:var(--stamp-blue);
+  }
+  @media (max-width:860px){ .rail{display:none;} }
+
+  /* ---------- hero / passport bio page ---------- */
+  .hero{padding:64px 0 40px;}
+  .eyebrow{
+    font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--stamp-blue);
+    text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"✦";}
+
+  .passport{
+    background:var(--card);
+    border:1px solid var(--line-strong);
+    border-radius:6px;
+    padding:0;
+    box-shadow:0 24px 48px -28px rgba(38,49,74,0.35);
+    position:relative;
+    overflow:hidden;
+  }
+  .passport-head{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 26px;
+    border-bottom:1px dashed var(--line-strong);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--ink-faint);
+    text-transform:uppercase;
+  }
+  .passport-body{
+    display:grid;grid-template-columns:150px 1fr;gap:34px;
+    padding:34px 30px 36px;
+  }
+  @media (max-width:600px){ .passport-body{grid-template-columns:1fr;} }
+
+  .photo-frame{
+    width:130px;height:150px;border:2px dashed var(--line-strong);border-radius:4px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(155deg, var(--paper), var(--card-line));
+    position:relative;
+  }
+  .monogram{
+    font-family:var(--display);font-size:44px;font-weight:600;color:var(--stamp-blue);
+  }
+  .stamp-overlay{
+    position:absolute;bottom:-14px;right:-18px;
+    width:74px;height:74px;border-radius:50%;
+    border:2.5px solid var(--stamp-red);color:var(--stamp-red);
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    font-family:var(--mono);font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;
+    transform:rotate(-14deg);
+    background:rgba(250,246,236,0.55);
+    animation:stamp-in .5s cubic-bezier(.2,1.6,.4,1) .3s both;
+  }
+  .stamp-overlay span{display:block;line-height:1.25;}
+  @keyframes stamp-in{
+    0%{transform:rotate(-14deg) scale(2.4);opacity:0;}
+    60%{opacity:1;}
+    100%{transform:rotate(-14deg) scale(1);opacity:1;}
+  }
+  @media (prefers-reduced-motion: reduce){ .stamp-overlay{animation:none;} }
+
+  .field-rows{display:flex;flex-direction:column;gap:14px;}
+  .field{display:grid;grid-template-columns:120px 1fr;gap:10px;align-items:baseline;}
+  .field .k{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--ink-faint);text-transform:uppercase;}
+  .field .v{font-family:var(--display);font-size:17px;font-weight:500;}
+  .field .v.name{font-size:26px;font-weight:600;line-height:1.15;}
+  .field .v.mono{font-family:var(--mono);font-size:13px;font-weight:400;color:var(--ink-soft);}
+
+  .badge-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+  .btag{
+    font-family:var(--mono);font-size:10.5px;color:var(--stamp-blue);
+    border:1px solid var(--stamp-blue);padding:4px 10px;border-radius:20px;
+    background:var(--stamp-blue-soft);
+  }
+
+  /* ---------- section shell ---------- */
+  section{padding:56px 0;position:relative;}
+  section + section{border-top:1px dashed var(--line-strong);}
+  .section-head{margin-bottom:30px;}
+  .section-tag{
+    font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);letter-spacing:.1em;
+    text-transform:uppercase;display:block;margin-bottom:6px;
+  }
+  h2{font-family:var(--display);font-weight:600;font-size:28px;letter-spacing:-.01em;}
+  .lede{color:var(--ink-soft);font-size:15px;max-width:600px;margin-top:8px;}
+
+  /* ---------- summary ---------- */
+  .summary-card{
+    background:var(--card);border:1px solid var(--line);border-radius:8px;
+    padding:28px 30px;font-size:16px;color:#333d54;
+    border-left:3px solid var(--gold);
+  }
+  .summary-card p{font-family:var(--body);}
+  .summary-card p::first-letter{
+    font-family:var(--display);font-size:2.6em;float:left;line-height:.8;padding:.06em .08em 0 0;
+    color:var(--stamp-blue);font-weight:700;
+  }
+  .edu-row{
+    margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+    font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);
+  }
+
+  /* ---------- experience journey ---------- */
+  .journey{border-left:2px solid var(--line-strong);margin-left:6px;}
+  .stop{position:relative;padding:0 0 30px 32px;}
+  .stop:last-child{padding-bottom:2px;}
+  .stop::before{
+    content:"";position:absolute;left:-7.5px;top:5px;width:13px;height:13px;border-radius:50%;
+    background:var(--card);border:2.5px solid var(--gold);
+  }
+  .stop.current::before{background:var(--gold);}
+  .ticket{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--mono);font-size:10.5px;color:var(--stamp-blue);
+    border:1px dashed var(--stamp-blue);padding:3px 10px;border-radius:3px;
+    background:var(--stamp-blue-soft);margin-bottom:8px;
+  }
+  .stop.current .ticket{border-color:var(--stamp-red);color:var(--stamp-red);background:var(--stamp-red-soft);}
+  .stop h3{font-family:var(--display);font-size:18px;font-weight:600;margin-bottom:9px;}
+  .stop ul{padding-left:0;}
+  .stop li{color:var(--ink-soft);font-size:14.5px;padding-left:16px;position:relative;margin-bottom:6px;}
+  .stop li::before{content:"—";position:absolute;left:0;color:var(--gold);}
+
+  /* ---------- community stamps ---------- */
+  .stamp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;}
+  .org-stamp{
+    background:var(--card);border:1px solid var(--line);border-radius:8px;
+    padding:18px 20px;position:relative;transition:.2s;
+  }
+  .org-stamp:hover{border-color:var(--stamp-blue);transform:translateY(-2px);}
+  .org-stamp .org{font-family:var(--display);font-weight:600;font-size:15px;margin-bottom:3px;}
+  .org-stamp .role{font-size:12.5px;color:var(--ink-soft);margin-bottom:8px;}
+  .org-stamp .dates{font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);}
+  .org-stamp .mark{
+    position:absolute;top:14px;right:16px;
+    font-family:var(--mono);font-size:9px;color:var(--stamp-blue);
+    border:1px solid var(--stamp-blue);border-radius:50%;
+    width:26px;height:26px;display:flex;align-items:center;justify-content:center;
+    transform:rotate(-8deg);
+  }
+
+  /* ---------- projects ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:22px 22px 20px;position:relative;}
+  .card h3{font-family:var(--display);font-size:17px;font-weight:600;margin-bottom:9px;}
+  .card p{color:var(--ink-soft);font-size:14px;}
+  .proj-index{
+    position:absolute;top:20px;right:20px;font-family:var(--mono);font-size:10px;color:var(--ink-faint);
+  }
+
+  /* ---------- skills ---------- */
+  .skill-group{margin-bottom:20px;}
+  .skill-group:last-child{margin-bottom:0;}
+  .skill-label{font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;display:block;}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;}
+  .chip{
+    font-family:var(--mono);font-size:12px;border:1px solid var(--line-strong);
+    padding:6px 13px;border-radius:20px;color:var(--ink-soft);background:var(--card);
+  }
+  .chip.primary{border-color:var(--gold);color:var(--gold);background:var(--gold-soft);}
+
+  /* ---------- certifications / languages ---------- */
+  .two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;}
+  @media (max-width:760px){.two-col{grid-template-columns:1fr;}}
+  .list-card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:24px 26px;}
+  .list-card ul li{
+    font-size:14.5px;color:var(--ink-soft);padding:9px 0;border-bottom:1px dashed var(--line);
+    display:flex;gap:10px;align-items:flex-start;
+  }
+  .list-card ul li:last-child{border-bottom:none;}
+  .list-card ul li::before{content:"◆";color:var(--gold);font-size:8px;margin-top:6px;}
+
+  .lang-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dashed var(--line);}
+  .lang-row:last-child{border-bottom:none;}
+  .lang-name{font-family:var(--display);font-size:14.5px;}
+  .lang-meta{display:flex;align-items:center;gap:10px;}
+  .lang-level{font-family:var(--mono);font-size:10px;color:var(--ink-faint);}
+  .meter{width:80px;height:5px;border-radius:3px;background:var(--card-line);overflow:hidden;}
+  .meter i{display:block;height:100%;background:var(--gold);border-radius:3px;}
+
+  /* ---------- education ---------- */
+  .edu-item{padding:15px 0;border-bottom:1px dashed var(--line);}
+  .edu-item:last-child{border-bottom:none;}
+  .edu-item h3{font-family:var(--display);font-size:15.5px;font-weight:600;}
+  .edu-item p{font-size:13.5px;color:var(--ink-soft);margin-top:3px;}
+  .edu-item .dates{font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);margin-top:4px;display:block;}
+
+  /* ---------- contact ---------- */
+  .contact-panel{
+    background:var(--card);
+    border:1px solid var(--line-strong);border-radius:10px;padding:38px;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:22px;
+    position:relative;
+  }
+  .contact-panel h2{margin-bottom:6px;}
+  .contact-links{display:flex;flex-wrap:wrap;gap:12px;}
+  .contact-links a{
+    font-family:var(--mono);font-size:12.5px;border:1px solid var(--line-strong);padding:10px 16px;border-radius:20px;
+    display:flex;align-items:center;gap:8px;color:var(--ink);transition:.2s;
+  }
+  .contact-links a:hover{border-color:var(--stamp-blue);color:var(--stamp-blue);background:var(--stamp-blue-soft);}
+  .contact-links a.primary{background:var(--stamp-blue);color:#f5f2e8;border-color:var(--stamp-blue);font-weight:600;}
+  .contact-links a.primary:hover{background:#203553;color:#f5f2e8;}
+
+  footer{text-align:center;padding:30px 0 46px;font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease, transform .55s ease;}
+  .reveal.show{opacity:1;transform:translateY(0);}
+
+  a:focus-visible, button:focus-visible{outline:2px solid var(--stamp-blue);outline-offset:3px;}
+
+  @media (max-width:600px){
+    .wrap{padding:0 20px;}
+    .hero{padding:44px 0 30px;}
+    section{padding:42px 0;}
+    .contact-panel{padding:26px 22px;}
+    .passport-body{padding:28px 20px 30px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="perf">
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<div class="statusbar">
+  <div class="statusbar-inner">
+    <span class="stamp-dot">PASSPORT NO. TSS-2026</span>
+    <span>ISSUED 2026 · TRIVANDRUM, IN</span>
+  </div>
+</div>
+
+<nav class="rail" aria-label="Section navigation">
+  <button data-target="#summary">Bio</button>
+  <button data-target="#experience">Journey</button>
+  <button data-target="#community">Network</button>
+  <button data-target="#projects">Projects</button>
+  <button data-target="#skills">Skills</button>
+  <button data-target="#credentials">Stamps</button>
+  <button data-target="#education">Education</button>
+  <button data-target="#contact">Contact</button>
+</nav>
+
+<main class="wrap">
+
+  <!-- HERO / PASSPORT BIO PAGE -->
+  <div class="hero">
+    <div class="eyebrow">A Learner's Passport</div>
+    <div class="passport reveal">
+      <div class="passport-head">
+        <span>Type: Trainee Engineer</span>
+        <span>Authority: K.S.R.M. College of Engineering</span>
+      </div>
+      <div class="passport-body">
+        <div class="photo-frame">
+          <span class="monogram">VS</span>
+          <div class="stamp-overlay"><span>Onboarded<br>May 2026</span></div>
+        </div>
+        <div class="field-rows">
+          <div class="field">
+            <span class="k">Name</span>
+            <span class="v name">Venkata Sai Naga Tejaswarup Sridhara</span>
+          </div>
+          <div class="field">
+            <span class="k">Current Role</span>
+            <span class="v">Assistant System Engineer Trainee, Tata Consultancy Services</span>
+          </div>
+          <div class="field">
+            <span class="k">Education</span>
+            <span class="v mono">B.Tech CSE · 2022 – 2026</span>
+          </div>
+          <div class="field">
+            <span class="k">Endorsement</span>
+            <span class="v mono">Vice President, Computer Society of India (2025–26)</span>
+          </div>
+          <div class="badge-tags">
+            <span class="btag">Salesforce Administration</span>
+            <span class="btag">Cybersecurity Fundamentals</span>
+            <span class="btag">Applied AI</span>
+            <span class="btag">Full-Stack Development</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <section id="summary">
+    <div class="section-head reveal">
+      <span class="section-tag">Page 01 — Biography</span>
+      <h2>Professional Summary</h2>
+    </div>
+    <div class="summary-card reveal">
+      <p>A lifelong learner currently serving as Assistant System Engineer Trainee at Tata Consultancy Services. Vice President of the CSI student chapter (2025–26) and "Mr. Ethnic" at K.S.R.M. College of Engineering (2022). Has worked as an Internshala Student Partner and student ambassador for LetsUpgrade, GUVI, MyGov, and NxtWave, alongside internships at Edunet, Infosys Springboard, and SmartBridge. An ATAL Lab student known for hard work, patience, determination, and sincerity toward every commitment.</p>
+      <div class="edu-row">
+        <span>K.S.R.M. COLLEGE OF ENGINEERING</span>
+        <span>B.TECH · COMPUTER SCIENCE ENGINEERING · NOV 2022 – MAY 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE / JOURNEY -->
+  <section id="experience">
+    <div class="section-head reveal">
+      <span class="section-tag">Page 02 — Entry &amp; Exit Record</span>
+      <h2>Professional Experience</h2>
+    </div>
+
+    <div class="journey">
+      <div class="stop current reveal">
+        <span class="ticket">ENTRY · MAY 2026 — PRESENT · TRIVANDRUM</span>
+        <h3>Assistant System Engineer Trainee — Tata Consultancy Services</h3>
+        <ul>
+          <li>Onboarded into TCS following selection through the campus recruitment process.</li>
+          <li>Working within enterprise systems engineering, building on prior cybersecurity and Salesforce training.</li>
+        </ul>
+      </div>
+
+      <div class="stop reveal">
+        <span class="ticket">AUG 2025 — OCT 2025</span>
+        <h3>Infosys Springboard Internship 6.0 (Python)</h3>
+        <ul>
+          <li>Completed a structured Python internship track through Infosys Springboard.</li>
+        </ul>
+      </div>
+
+      <div class="stop reveal">
+        <span class="ticket">JUL 2025 — OCT 2025</span>
+        <h3>TCS LastMile Program — Salesforce AI Agent Developer Track</h3>
+        <ul>
+          <li>Built AI-enabled Salesforce CRM solutions as part of TCS's LastMile developer track.</li>
+          <li>Worked with Agentforce-style automation across the Salesforce platform.</li>
+        </ul>
+      </div>
+
+      <div class="stop reveal">
+        <span class="ticket">MAY 2025 — JUL 2025</span>
+        <h3>Salesforce Developer — Agentblazer Champion Program (TheSmartBridge)</h3>
+        <ul>
+          <li>Practiced Salesforce development under the Agentblazer Champion curriculum.</li>
+          <li>Configured CRM objects, automation flows, reports, and dashboards.</li>
+        </ul>
+      </div>
+
+      <div class="stop reveal">
+        <span class="ticket">MAR 2025 — MAY 2025</span>
+        <h3>ServiceNow System Administrator — Virtual Internship (SmartInternz)</h3>
+        <ul>
+          <li>Gained hands-on exposure to ServiceNow platform administration.</li>
+        </ul>
+      </div>
+
+      <div class="stop reveal">
+        <span class="ticket">FEB 2025 — MAR 2025</span>
+        <h3>EY GDS NextGen — Full Stack Web Development (MERN), 6-Week Internship</h3>
+        <ul>
+          <li>Built a Personal Finance Manager application using MongoDB, Express, React, and Node.js.</li>
+        </ul>
+      </div>
+
+      <div class="stop reveal">
+        <span class="ticket">DEC 2024 — FEB 2025</span>
+        <h3>AI: Transformative Learning with TechSaksham — Edunet Foundation</h3>
+        <ul>
+          <li>Completed AICTE–Edunet's applied AI learning program under the TechSaksham initiative.</li>
+        </ul>
+      </div>
+
+      <div class="stop reveal">
+        <span class="ticket">AUG 2024 — SEP 2024</span>
+        <h3>Website Design &amp; Development Internship — Internship Studio</h3>
+        <ul>
+          <li>Designed and built an e-commerce website covering the core pages and features needed to buy and sell products online.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY / NETWORK -->
+  <section id="community">
+    <div class="section-head reveal">
+      <span class="section-tag">Page 03 — Visa &amp; Affiliations</span>
+      <h2>Leadership, Community &amp; Ambassador Programs</h2>
+      <p class="lede">Alongside internships, sustained involvement as a campus ambassador and community affiliate across several learning platforms.</p>
+    </div>
+    <div class="stamp-grid reveal">
+      <div class="org-stamp">
+        <span class="mark">VP</span>
+        <div class="org">Computer Society of India</div>
+        <div class="role">Vice President, Student Chapter</div>
+        <div class="dates">2025 – 2026</div>
+      </div>
+      <div class="org-stamp">
+        <span class="mark">CA</span>
+        <div class="org">MyGov @ Campus</div>
+        <div class="role">Campus Ambassador</div>
+        <div class="dates">Jun 2024 – Jun 2026</div>
+      </div>
+      <div class="org-stamp">
+        <span class="mark">AF</span>
+        <div class="org">NxtWave</div>
+        <div class="role">Affiliate</div>
+        <div class="dates">Jun 2024 – May 2026</div>
+      </div>
+      <div class="org-stamp">
+        <span class="mark">PR</span>
+        <div class="org">PrepInsta</div>
+        <div class="role">Prime Subscriber</div>
+        <div class="dates">Feb 2025 – Present</div>
+      </div>
+      <div class="org-stamp">
+        <span class="mark">GV</span>
+        <div class="org">GUVI Geek Networks, IITM Research Park</div>
+        <div class="role">Affiliate Program</div>
+        <div class="dates">Mar 2024 – Oct 2024</div>
+      </div>
+      <div class="org-stamp">
+        <span class="mark">SP</span>
+        <div class="org">Internshala</div>
+        <div class="role">Student Partner (multiple terms)</div>
+        <div class="dates">Aug 2023 – Oct 2024</div>
+      </div>
+      <div class="org-stamp">
+        <span class="mark">★</span>
+        <div class="org">LetsUpgrade</div>
+        <div class="role">Student Ambassador (multiple terms) — bronze medal &amp; swags</div>
+        <div class="dates">Oct 2023 – Aug 2024</div>
+      </div>
+      <div class="org-stamp">
+        <span class="mark">CA</span>
+        <div class="org">Careers360</div>
+        <div class="role">Campus Ambassador Internship</div>
+        <div class="dates">Jun 2024 – Jul 2024</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-head reveal">
+      <span class="section-tag">Page 04 — Souvenirs</span>
+      <h2>Featured Projects</h2>
+    </div>
+    <div class="grid">
+      <div class="card reveal">
+        <span class="proj-index">01</span>
+        <h3>Personal Finance Manager</h3>
+        <p>Full-stack MERN application built during the EY GDS NextGen internship for tracking expenses and managing personal finances end to end.</p>
+      </div>
+      <div class="card reveal">
+        <span class="proj-index">02</span>
+        <h3>E-commerce Website</h3>
+        <p>A website enabling the buying and selling of tangible goods, digital products, and services, built with the core pages and features an online store needs.</p>
+      </div>
+      <div class="card reveal">
+        <span class="proj-index">03</span>
+        <h3>Salesforce AI Agent Solutions</h3>
+        <p>AI-enabled Salesforce CRM builds developed across the TCS LastMile and Agentblazer Champion programs, spanning automation flows, objects, and dashboards.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-head reveal">
+      <span class="section-tag">Page 05 — Declared Goods</span>
+      <h2>Skills</h2>
+    </div>
+    <div class="reveal">
+      <div class="skill-group">
+        <span class="skill-label">Top Skills (LinkedIn)</span>
+        <div class="chips">
+          <span class="chip primary">Salesforce Training</span>
+          <span class="chip primary">Salesforce.com Administration</span>
+          <span class="chip primary">Salesforce.com Implementation</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <span class="skill-label">Platforms &amp; Tools From Experience</span>
+        <div class="chips">
+          <span class="chip">ServiceNow</span>
+          <span class="chip">Python</span>
+          <span class="chip">MERN Stack</span>
+          <span class="chip">React</span>
+          <span class="chip">Node.js</span>
+          <span class="chip">MongoDB</span>
+          <span class="chip">TensorFlow.js</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS: certifications + languages -->
+  <section id="credentials">
+    <div class="section-head reveal">
+      <span class="section-tag">Page 06 — Official Stamps</span>
+      <h2>Certifications &amp; Languages</h2>
+    </div>
+    <div class="two-col reveal">
+      <div class="list-card">
+        <span class="skill-label">Certifications</span>
+        <ul>
+          <li>IBM Cybersecurity Fundamentals</li>
+          <li>edX Verified Certificate — Google AI for Anyone</li>
+          <li>edX Verified Certificate — Google AI for JavaScript Developers with TensorFlow.js</li>
+          <li>Duelist (badge earned)</li>
+          <li>Accenture North America — Coding: Development &amp; Advanced Engineering Job Simulation</li>
+        </ul>
+      </div>
+      <div class="list-card">
+        <span class="skill-label">Languages</span>
+        <div class="lang-row">
+          <span class="lang-name">Telugu</span>
+          <span class="lang-meta"><span class="lang-level">NATIVE / BILINGUAL</span><span class="meter"><i style="width:100%;"></i></span></span>
+        </div>
+        <div class="lang-row">
+          <span class="lang-name">English</span>
+          <span class="lang-meta"><span class="lang-level">LIMITED WORKING</span><span class="meter"><i style="width:45%;"></i></span></span>
+        </div>
+        <div class="lang-row">
+          <span class="lang-name">Hindi</span>
+          <span class="lang-meta"><span class="lang-level">LIMITED WORKING</span><span class="meter"><i style="width:45%;"></i></span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-head reveal">
+      <span class="section-tag">Page 07 — Prior Residency</span>
+      <h2>Education</h2>
+    </div>
+    <div class="list-card reveal">
+      <div class="edu-item">
+        <h3>K.S.R.M. College of Engineering</h3>
+        <p>Bachelor of Technology — Computer Science Engineering</p>
+        <span class="dates">Nov 2022 – May 2026</span>
+      </div>
+      <div class="edu-item">
+        <h3>Internshala Trainings</h3>
+        <p>Web Development Certification Course</p>
+        <span class="dates">Aug 2023 – Oct 2023</span>
+      </div>
+      <div class="edu-item">
+        <h3>A.P. Model Junior College (Govt.)</h3>
+        <p>Intermediate Education, MPC</p>
+        <span class="dates">Feb 2021 – Mar 2022</span>
+      </div>
+      <div class="edu-item">
+        <h3>A.P. Model School (Govt.)</h3>
+        <p>Secondary Education (10th Class)</p>
+        <span class="dates">Jun 2019 – Mar 2020</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-head reveal">
+      <span class="section-tag">Page 08 — Point Of Contact</span>
+      <h2>Get in Touch</h2>
+    </div>
+    <div class="contact-panel reveal">
+      <div>
+        <h2>Let's build something worth stamping.</h2>
+        <p class="lede">Open to opportunities in systems engineering, Salesforce, and applied AI.</p>
+      </div>
+      <div class="contact-links">
+        <a class="primary" href="https://www.linkedin.com/in/venkatasai-naga-tejaswarupsridhara-9257a127b" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="mailto:tejaplacements@gmail.com">tejaplacements@gmail.com</a>
+        <a href="tel:+918309162253">+91 83091 62253</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>© 2026 VENKATA SAI NAGA TEJASWARUP SRIDHARA — STAMPED WITH CARE</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.1});
+  revealEls.forEach(el=>io.observe(el));
+
+  const railButtons = document.querySelectorAll('.rail button');
+  const sections = Array.from(railButtons).map(b=>document.querySelector(b.dataset.target));
+
+  railButtons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelector(btn.dataset.target).scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
+  const navObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      const idx = sections.indexOf(entry.target);
+      if(idx === -1) return;
+      if(entry.isIntersecting){
+        railButtons.forEach(b=>b.classList.remove('active'));
+        railButtons[idx].classList.add('active');
+      }
+    });
+  }, {rootMargin:'-45% 0px -45% 0px', threshold:0});
+
+  sections.forEach(s=> s && navObserver.observe(s));
+</script>
+
+</body>
+</html>
